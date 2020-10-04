@@ -2,7 +2,7 @@
 
 class LinkedList():
     """
-    Simplist linked list implementation using 2 attributes.
+    Simplest linked list implementation using 2 attributes.
 
     Attributes
     ----------
@@ -13,7 +13,7 @@ class LinkedList():
 
     Methods
     -------
-    Present(search):
+    present(search):
         searches for a value in the list
     sort():
         sorts linked list using in-built string sorting
