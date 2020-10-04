@@ -60,6 +60,36 @@ class LinkedList():
         else:
             raise IndexError(str(i) + ": is out of bounds of the list. The current list length is: "+str(count))    
 
+    def __delitem__(self,i):
+        count = 0
+        if i >= len(self):
+            raise IndexError(str(i) + ": is out of bounds of the list. The current list length is: "+str(count))
+        if(isinstance(i,int)):
+            current = self
+            while count + 1 != i:
+                current = current.link
+                count += 1
+            current.link = current.link.link
+        else:
+            raise Exception("currently only integer deletion is supported")
+           
+    def __str__(self):
+        printString = "]"
+        current = self
+        while current != None:
+            printString = ",'" + current.data + "'" + printString
+            current = current.link
+        printString = "[" + printString[1:]
+        return printString
+
+    def __repr__(self):
+        array = []
+        current = self
+        while current != None:
+            array.insert(0,current.data)
+            current = current.link
+        return array
+
     def __len__(self):
         count = 0
         current = self
@@ -172,3 +202,7 @@ print("")
 x[3] = 17
 print(x[3])
 print(len(x))
+print("")
+del(x[3])
+print(str(x))
+print(x)
