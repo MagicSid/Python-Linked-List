@@ -2,7 +2,7 @@
 
 class LinkedList():
     """
-    Simplest linked list implementation using 2 attributes.
+    Simplist linked list implementation using 2 attributes.
 
     Attributes
     ----------
@@ -13,7 +13,7 @@ class LinkedList():
 
     Methods
     -------
-    present(search):
+    Present(search):
         searches for a value in the list
     sort():
         sorts linked list using in-built string sorting
@@ -37,6 +37,36 @@ class LinkedList():
         """
         self.link = link
         self.data = data
+
+    def __getitem__(self,i):
+        count = 0
+        current = self
+        while count != i and current != None:
+            current = current.link
+            count +=1
+        if count == i and current != None:
+            return current.data
+        else:
+            raise IndexError(str(i) + ": is out of bounds of the list. The current list length is: "+str(count))
+
+    def __setitem__(self,i,value):
+        count = 0
+        current = self
+        while count != i and current != None:
+            current = current.link
+            count +=1
+        if count == i and current != None:
+            current.data = value
+        else:
+            raise IndexError(str(i) + ": is out of bounds of the list. The current list length is: "+str(count))    
+
+    def __len__(self):
+        count = 0
+        current = self
+        while current != None:
+            current = current.link
+            count+=1
+        return count
 
     def present(self,search):
         """
@@ -123,6 +153,8 @@ class LinkedList():
         self.data = current.data
         self.link = current.link
 
+        
+
 
 x = LinkedList(None,"12")
 x = LinkedList(x,"4")
@@ -136,3 +168,7 @@ x.printAll()
 print("")
 x.reverse()
 x.printAll()
+print("")
+x[3] = 17
+print(x[3])
+print(len(x))
